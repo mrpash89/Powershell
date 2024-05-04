@@ -8,9 +8,9 @@ $form.Height = 170
 
 # Create a label
 $label = New-Object System.Windows.Forms.Label
-$label.Text = "Press the button to check battery status:"
+$label.Text = "Press the button to check battery status: 5sec fetch time"
 $label.Location = New-Object System.Drawing.Point(20, 20)
-$label.Width = 150
+$label.Width = 190
 $label.Height = 30
 $form.Controls.Add($label)
 
@@ -31,11 +31,11 @@ $form.Controls.Add($textBox)
 
 # Create a timer (Updates text box with battery status at interval)
 $atimer = New-Object System.Windows.Forms.Timer
-$atimer.Interval = 1500 # Set the interval in milliseconds (1.5 second)
+$atimer.Interval = 5000 # Set the interval in milliseconds (5 second)
 #$timer.AutoReset = true
 #$atimer.Enabled = $true
 $atimer.Add_Tick({
-		$batteryStatus = (Get-PnpDevice -Class 'Bluetooth' -InstanceId 'BTHLE\DEV_0C3526770446\7&9B9FC6C&0&0C3526770446' |
+		$batteryStatus = (Get-PnpDevice -Class 'Bluetooth' -FriendlyName "Xbox*" |
 			Get-PnpDeviceProperty -KeyName '{104EA319-6EE2-4701-BD47-8DDBF425BBE5} 2').Data
 		$textBox.Text = "Battery Status: $batteryStatus%"
 	})
