@@ -72,7 +72,7 @@ Legend:
 16-50 ms: Orange
 >51 ms: Red
 "@
-	Show-Popup "Ping Response Time Legend" $legendMessage
+	Show-Popup "Ping Response Legend" $legendMessage
 }
 
 # Function to show a popup window
@@ -85,7 +85,7 @@ function Show-Popup
 	
 	$popupForm = New-Object System.Windows.Forms.Form
 	$popupForm.Text = $title
-	$popupForm.Width = 250
+	$popupForm.Width = 320
 	$popupForm.Height = 150
 	
 	$popupLabel = New-Object System.Windows.Forms.Label
